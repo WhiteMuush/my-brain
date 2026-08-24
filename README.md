@@ -8,19 +8,18 @@
   <img src="https://img.shields.io/badge/Obsidian-7C3AED?style=flat-square&logo=obsidian&logoColor=white" alt="Obsidian">
   <img src="https://img.shields.io/badge/Markdown-000000?style=flat-square&logo=markdown&logoColor=white" alt="Markdown">
   <img src="https://img.shields.io/badge/Sync-Obsidian%20Git-F05032?style=flat-square&logo=git&logoColor=white" alt="Obsidian Git">
-  <img src="https://img.shields.io/badge/Dépôt-public-16A34A?style=flat-square" alt="Public">
+  <img src="https://img.shields.io/badge/Dépôt-privé-6B7280?style=flat-square" alt="Privé">
 </p>
 
 ---
 
-> [!WARNING]
-> **Ce dépôt est public.** Tout ce qui est écrit dans ce coffre est visible par
-> n'importe qui, et l'historique Git conserve chaque version, y compris les
-> fichiers supprimés par la suite.
+> [!NOTE]
+> Dépôt **privé**. À garder ainsi : l'historique Git conserve chaque version de
+> chaque fichier, y compris ceux supprimés ensuite. Ce qui entre ici n'en sort
+> plus vraiment.
 >
-> Rien de personnel ni de confidentiel ici : pas de mot de passe, pas de clé
-> privée, pas de jeton d'API, pas d'adresse publique de serveur, rien
-> concernant d'autres personnes. Ces notes sont techniques et rien d'autre.
+> Éviter malgré tout d'y écrire des mots de passe, des clés privées ou des
+> jetons d'API. Un dépôt privé n'est pas un coffre-fort.
 
 ## Ce que c'est
 
