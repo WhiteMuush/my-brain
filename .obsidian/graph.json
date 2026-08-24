@@ -1,0 +1,163 @@
+{
+  "collapse-filter": true,
+  "search": "",
+  "showTags": false,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "file:Accueil",
+      "color": {
+        "a": 1,
+        "rgb": 11032055
+      }
+    },
+    {
+      "query": "file:Proxmox",
+      "color": {
+        "a": 1,
+        "rgb": 15036416
+      }
+    },
+    {
+      "query": "file:Ansible",
+      "color": {
+        "a": 1,
+        "rgb": 15597568
+      }
+    },
+    {
+      "query": "file:Kubernetes",
+      "color": {
+        "a": 1,
+        "rgb": 1920728
+      }
+    },
+    {
+      "query": "file:Docker",
+      "color": {
+        "a": 1,
+        "rgb": 2397933
+      }
+    },
+    {
+      "query": "file:Terraform",
+      "color": {
+        "a": 1,
+        "rgb": 9133302
+      }
+    },
+    {
+      "query": "file:\"GitHub Actions\"",
+      "color": {
+        "a": 1,
+        "rgb": 6514417
+      }
+    },
+    {
+      "query": "file:GitLab",
+      "color": {
+        "a": 1,
+        "rgb": 16096779
+      }
+    },
+    {
+      "query": "file:GitHub",
+      "color": {
+        "a": 1,
+        "rgb": 10265519
+      }
+    },
+    {
+      "query": "file:Git",
+      "color": {
+        "a": 1,
+        "rgb": 7893356
+      }
+    },
+    {
+      "query": "file:Grafana",
+      "color": {
+        "a": 1,
+        "rgb": 15381256
+      }
+    },
+    {
+      "query": "file:Prometheus",
+      "color": {
+        "a": 1,
+        "rgb": 14753096
+      }
+    },
+    {
+      "query": "file:Helm",
+      "color": {
+        "a": 1,
+        "rgb": 440020
+      }
+    },
+    {
+      "query": "file:ArgoCD",
+      "color": {
+        "a": 1,
+        "rgb": 14239471
+      }
+    },
+    {
+      "query": "file:Nginx",
+      "color": {
+        "a": 1,
+        "rgb": 2278750
+      }
+    },
+    {
+      "query": "file:Debian",
+      "color": {
+        "a": 1,
+        "rgb": 15485081
+      }
+    },
+    {
+      "query": "file:Linux",
+      "color": {
+        "a": 1,
+        "rgb": 8702998
+      }
+    },
+    {
+      "query": "file:AWS",
+      "color": {
+        "a": 1,
+        "rgb": 1357990
+      }
+    },
+    {
+      "query": "file:Azure",
+      "color": {
+        "a": 1,
+        "rgb": 959977
+      }
+    },
+    {
+      "query": "file:Reseau",
+      "color": {
+        "a": 1,
+        "rgb": 1096065
+      }
+    }
+  ],
+  "collapse-display": true,
+  "showArrow": false,
+  "textFadeMultiplier": 0,
+  "nodeSizeMultiplier": 1,
+  "lineSizeMultiplier": 1,
+  "collapse-forces": true,
+  "centerStrength": 0.518713248970312,
+  "repelStrength": 10,
+  "linkStrength": 1,
+  "linkDistance": 250,
+  "scale": 1.5,
+  "close": true
+}
