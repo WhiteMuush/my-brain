@@ -1,30 +1,47 @@
-1. Créer un cluster kind : 
-kind create cluster --name velero-lab
-2. Vérifier :
-kubectl cluster-info
-kubectl get nodes
+# MinIO
 
-3. Créer un namespace : 
+Serveur de stockage objet qui parle le protocole S3. Ici il sert de dépôt de
+sauvegardes pour [[Velero]]. Deux ports : 9000 pour l'API S3, 9001 pour la
+console web.
+
+## Refaire l'installation
+
+**1. Cluster Kind** (le fichier porte le nom et le mapping de ports)
+
+```bash
+kind create cluster --config kind-config.yaml
+```
+
+**2. Namespace**
+
+```bash
 kubectl create ns minio
-4. vérifier :
-kubectl get ns minio
+```
 
-5. Ignorer les fichiers sensibles, AVANT tout git add, dans .gitignore :
+**3. Ignorer les secrets AVANT tout git add**, dans `.gitignore`
+
+```
 .env
-credentials-velero
-.idea/
+.credentials-velero
+```
 
-6. Créer le .env, avec les noms de clés attendus par le chart :
+**4. Le `.env`**, avec les noms de clés attendus par le chart
+
+```ini
 rootUser=rootuser
 rootPassword=motdepasse
+```
 
-7. Créer le Secret depuis le .env (aucune valeur en argument, donc rien dans l'historique du shell :
+**5. Le Secret**, créé depuis ce fichier. Aucune valeur en argument, donc rien
+dans l'historique du shell.
+
+```bash
 kubectl create secret generic minio-root-credentials -n minio --from-env-file=.env
+```
 
-8. Vérifier :
-kubectl describe secret minio-root-credentials -n minio
+**6. `minio/values.yaml`**, sans aucun identifiant
 
-9. Écrire minio/values.yaml, sans aucun identifiant :
+```yaml
 existingSecret: minio-root-credentials
 mode: standalone
 replicas: 1
@@ -34,35 +51,78 @@ persistence:
 resources:
   requests:
     memory: 512Mi
-    
-10. Ajouter le dépôt Helm :
+```
+
+**7. Installer**, version épinglée pour rester reproductible
+
+```bash
 helm repo add minio https://charts.min.io/
-
-11. Installer, en épinglant la version du chart pour rester reproductible :
 helm install minio minio/minio -n minio -f minio/values.yaml --version 5.4.0
+```
 
-12. Vérifier :
+**8. Vérifier**
+
+```bash
 kubectl get pods,pvc,svc -n minio
-helm get values minio -n minio
+```
 
-13. Ouvrir la console dans le navigateur :
+**9. Ouvrir la console** sur http://127.0.0.1:9001, avec les valeurs du `.env`
+
+```bash
 kubectl port-forward svc/minio-console -n minio 9001:9001
-puis http://localhost:9001, connexion avec les valeurs du .env
+```
 
-Fait jusqu'à l'étape 12. Reste : la console, le bucket velero, l'access key.
+**10. Dans la console** : créer le bucket `velero`, puis une access key.
+Reporter les deux valeurs dans `.credentials-velero`, au format profil AWS.
 
-À retenir :
-- le .gitignore ne protège pas un fichier déjà passé par git add, il faut git restore --staged .env
-- le brief propose persistence.enabled=false : ça monte un emptyDir, dont la durée de vie est celle du POD. Un conteneur qui redémarre garde les données, un pod supprimé ou recréé les perd
-- choix retenu : persistence.enabled=true, donc un PVC. Le stockage survit au pod, ce qui est le minimum pour un dépôt de sauvegardes. Kind fournit la StorageClass standard (rancher.io/local-path)
-- un PVC survit à helm uninstall. Pour repartir propre : kubectl delete pvc -n minio --all
-- helm install refuse un nom déjà pris (cannot re-use a name that is still in use). Pour modifier une release existante c'est helm upgrade
-- la taille d'un PVC ne peut qu'augmenter. Passer de 500Gi à 5Gi par helm upgrade est refusé, il faut désinstaller et supprimer le PVC
-- sans --version, helm prend la dernière version du catalogue. La doc n'est plus reproductible six mois plus tard
-- local-path écrit dans le système de fichiers du nœud Kind : les données survivent au pod, pas à kind delete cluster
-- console MinIO sur le port 9001, API S3 sur le port 9000
-- un Secret Kubernetes est encodé en base64, pas chiffré
-- existingSecret évite d'écrire le mot de passe dans values.yaml et dans les values Helm
+```ini
+[default]
+aws_access_key_id = ...
+aws_secret_access_key = ...
+```
 
+## Pourquoi ces choix
 
-- [[Velero]]
+**`existingSecret`** : le mot de passe reste hors du `values.yaml` et hors des
+values Helm. Sans lui, `helm get values minio` le ressort en clair.
+
+**`persistence.enabled=true`** : le brief propose `false`, ce qui monte un
+emptyDir dont la durée de vie est celle du pod. Un dépôt de sauvegardes sur
+stockage éphémère se contredit lui-même. Avec un PVC, les données survivent au
+pod, mais pas à `kind delete cluster`.
+
+**`--version`** : sans elle, Helm prend la dernière version du catalogue, et la
+doc n'est plus reproductible six mois plus tard.
+
+## Pièges rencontrés
+
+Le `.gitignore` ne protège pas un fichier déjà passé par `git add`. Pour l'en
+sortir sans perdre le fichier :
+
+```bash
+git restore --staged .env
+git check-ignore -v .env
+```
+
+Un PVC survit à `helm uninstall`. Pour repartir vraiment propre :
+
+```bash
+helm uninstall minio -n minio
+kubectl delete pvc -n minio --all
+```
+
+Le reste, en vrac :
+
+- La taille d'un PVC ne peut qu'augmenter, jamais diminuer
+- `helm install` refuse un nom déjà pris. Pour modifier une release existante,
+  c'est `helm upgrade`
+- Un Secret Kubernetes est encodé en base64, pas chiffré
+
+## Raccourcis du projet
+
+```bash
+make minio      # installe MinIO
+make console    # port-forward vers la console
+```
+
+- [[Kubernetes]] | [[Velero]]
