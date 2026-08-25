@@ -5,7 +5,7 @@
   "showAttachments": false,
   "hideUnresolved": false,
   "showOrphans": true,
-  "collapse-color-groups": false,
+  "collapse-color-groups": true,
   "colorGroups": [
     {
       "query": "file:Accueil",
@@ -146,18 +146,32 @@
         "a": 1,
         "rgb": 1096065
       }
+    },
+    {
+      "query": "file:Velero",
+      "color": {
+        "a": 1,
+        "rgb": 65471
+      }
+    },
+    {
+      "query": "MinIO",
+      "color": {
+        "a": 1,
+        "rgb": 49151
+      }
     }
   ],
   "collapse-display": true,
   "showArrow": false,
-  "textFadeMultiplier": 0,
-  "nodeSizeMultiplier": 1,
-  "lineSizeMultiplier": 1,
-  "collapse-forces": true,
-  "centerStrength": 0.518713248970312,
-  "repelStrength": 10,
-  "linkStrength": 1,
-  "linkDistance": 250,
-  "scale": 1.5,
+  "textFadeMultiplier": -1.4,
+  "nodeSizeMultiplier": 1.40473372781065,
+  "lineSizeMultiplier": 1.87765072765073,
+  "collapse-forces": false,
+  "centerStrength": 0,
+  "repelStrength": 1.83743382123949,
+  "linkStrength": 0,
+  "linkDistance": 30,
+  "scale": 1.2010344079243933,
   "close": true
 }
