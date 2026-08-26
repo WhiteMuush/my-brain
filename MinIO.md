@@ -1,4 +1,4 @@
-# MinIO
+	# MinIO
 
 Serveur de stockage objet qui parle le protocole S3. Ici il sert de dépôt de
 sauvegardes pour [[Velero]]. Deux ports : 9000 pour l'API S3, 9001 pour la

@@ -121,4 +121,4 @@ make drop       # supprime le namespace
 make restore    # restaure depuis le backup
 ```
 
-- [[Kubernetes]] | [[MinIO]]
+- [[Kubernetes]] | [[MinIO]] | [[Azure]]

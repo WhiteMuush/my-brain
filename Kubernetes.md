@@ -2,3 +2,4 @@
 
 - [[MinIO]]
 - [[Velero]]
+- [[Azure]]
