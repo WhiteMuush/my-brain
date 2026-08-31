@@ -1,7 +1,13 @@
 # Velero
 
 Sauvegarde et restauration de ressources Kubernetes. Il écrit ses backups dans
-un stockage compatible S3, ici [[MinIO]] installé dans le cluster.
+un stockage objet : MinIO dans le cluster pour le labo local, un container
+Blob sur Azure pour la version AKS.
+
+Il sauvegarde des **objets de l'API** (Deployment, Service, ConfigMap,
+Namespace), pas des machines. Le bucket ou container part **vide** : Velero le
+remplit lui-même avec son arborescence `backups/` et `restores/`. Y déposer un
+fichier à la main n'a aucun sens.
 
 Deux morceaux distincts : une **CLI** sur ma machine, et un **serveur** dans le
 cluster. Installer la CLI ne suffit pas.
@@ -18,7 +24,7 @@ install -m 755 velero-$V-linux-amd64/velero ~/.local/bin/velero
 velero version --client-only
 ```
 
-## Installer le serveur
+## Installer le serveur sur MinIO
 
 Le bucket et l'access key doivent déjà exister côté MinIO.
 
@@ -39,6 +45,45 @@ Vérification qui conditionne tout le reste, la colonne `PHASE` doit afficher
 ```bash
 velero backup-location get
 ```
+
+## Installer le serveur sur AKS
+
+Sans aucune clé, via Workload Identity. La chaîne d'identité côté Azure est
+décrite dans Azure, elle doit exister avant.
+
+```bash
+kubectl create namespace velero
+kubectl create serviceaccount velero -n velero
+kubectl annotate serviceaccount velero -n velero \
+  azure.workload.identity/client-id=$(az identity show -g mpetitRG -n id-velero --query clientId -o tsv)
+kubectl create clusterrolebinding velero --clusterrole=cluster-admin --serviceaccount=velero:velero
+```
+
+```bash
+cat > credentials-velero <<EOF
+AZURE_SUBSCRIPTION_ID=...
+AZURE_RESOURCE_GROUP=mpetitRG
+AZURE_CLOUD_NAME=AzurePublicCloud
+EOF
+
+velero install \
+  --provider azure \
+  --plugins velero/velero-plugin-for-microsoft-azure:v1.13.0 \
+  --bucket storagevelerocontainer \
+  --secret-file ./credentials-velero \
+  --service-account-name velero \
+  --pod-labels azure.workload.identity/use=true \
+  --use-volume-snapshots=false \
+  --use-node-agent=false \
+  --backup-location-config useAAD=true,storageAccount=mpaccountstorage,resourceGroup=mpetitRG
+```
+
+Malgré son nom, `credentials-velero` ne contient **aucun secret** en Workload
+Identity, seulement des identifiants publics.
+
+Le drapeau `--pod-labels azure.workload.identity/use=true` est celui qu'on
+oublie. Sans lui, tout le reste est correct et rien ne marche, avec un message
+peu parlant. C'est l'erreur numéro un sur ce setup.
 
 ## Sauvegarder et restaurer
 
@@ -111,7 +156,41 @@ Le reste, en vrac :
   qui tente de résoudre un nom DNS interne au cluster depuis ma machine. Le
   backup lui-même est intact
 
+Statut `FailedValidation` juste après une installation : le backup est parti
+avant la première validation du BackupStorageLocation. Ce n'est pas une erreur
+de configuration, juste une course au démarrage. Attendre `Available` et
+relancer.
+
+Blobs supprimés à la main mais `velero backup get` affiche encore le backup :
+c'est l'objet Backup **stocké dans le cluster**, pas les données. Il pointe dans
+le vide, une restauration échouerait.
+
+```bash
+velero backup delete nginx-backup --confirm   # nettoie l'enregistrement
+```
+
+`No backups found` sur un `backup delete` n'est pas une erreur, il n'y avait
+rien à supprimer.
+
+Un backup `Completed` mais vide : le namespace ciblé ne contenait rien. Piège
+classique, des manifests appliqués sans `namespace:` atterrissent dans
+`default`.
+
 ## Raccourcis du projet
+
+Projet AKS :
+
+```bash
+make setup-velero   # installe le serveur avec Workload Identity
+make app            # deploie nginx dans velero-lab
+make check          # etat du backup-location
+make backup         # sauvegarde le namespace
+make drop           # supprime le namespace
+make restore        # restaure, puis attend que le deployment soit pret
+make blobs          # liste ce que Velero a ecrit cote Azure
+```
+
+Projet MinIO local :
 
 ```bash
 make velero     # installe le serveur
@@ -120,5 +199,3 @@ make backup     # sauvegarde le namespace
 make drop       # supprime le namespace
 make restore    # restaure depuis le backup
 ```
-
-- [[Kubernetes]] | [[MinIO]] | [[Azure]]

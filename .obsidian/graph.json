@@ -1,11 +1,11 @@
 {
-  "collapse-filter": false,
+  "collapse-filter": true,
   "search": "",
   "showTags": false,
   "showAttachments": false,
   "hideUnresolved": false,
-  "showOrphans": true,
-  "collapse-color-groups": false,
+  "showOrphans": false,
+  "collapse-color-groups": true,
   "colorGroups": [
     {
       "query": "file:Accueil",
@@ -155,7 +155,7 @@
       }
     },
     {
-      "query": "MinIO",
+      "query": "file:MinIO",
       "color": {
         "a": 1,
         "rgb": 49151
@@ -168,10 +168,10 @@
   "nodeSizeMultiplier": 1.40473372781065,
   "lineSizeMultiplier": 1.87765072765073,
   "collapse-forces": false,
-  "centerStrength": 0,
-  "repelStrength": 1.73777639364684,
-  "linkStrength": 0.0769230769230769,
-  "linkDistance": 30,
-  "scale": 1.2431118339633995,
+  "centerStrength": 0.3410152600436,
+  "repelStrength": 12,
+  "linkStrength": 1,
+  "linkDistance": 250,
+  "scale": 0.9678059154592883,
   "close": true
 }

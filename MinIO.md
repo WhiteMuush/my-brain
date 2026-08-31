@@ -1,7 +1,7 @@
 	# MinIO
 
 Serveur de stockage objet qui parle le protocole S3. Ici il sert de dépôt de
-sauvegardes pour [[Velero]]. Deux ports : 9000 pour l'API S3, 9001 pour la
+sauvegardes pour Velero. Deux ports : 9000 pour l'API S3, 9001 pour la
 console web.
 
 ## Refaire l'installation
@@ -124,5 +124,3 @@ Le reste, en vrac :
 make minio      # installe MinIO
 make console    # port-forward vers la console
 ```
-
-- [[Kubernetes]] | [[Velero]]
