@@ -1,5 +1,8 @@
 # Terraform State GitLab
 
+Les bases du projet sont dans [[Terraform]]. Cette note ne traite que du
+stockage du state.
+
 GitLab héberge des states Terraform via son API, sans storage account ni bucket
 S3 à provisionner. C'est le backend `http`, avec le verrouillage géré par
 GitLab.
