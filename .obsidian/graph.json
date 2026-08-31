@@ -162,7 +162,7 @@
       }
     }
   ],
-  "collapse-display": false,
+  "collapse-display": true,
   "showArrow": false,
   "textFadeMultiplier": -1.4,
   "nodeSizeMultiplier": 1.40473372781065,
