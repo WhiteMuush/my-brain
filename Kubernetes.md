@@ -42,3 +42,8 @@ image: nginx:1.27-alpine
 Jamais `latest` quand on teste une restauration : [[Velero]] sauvegarde la
 définition de l'objet, donc le tag. Avec `latest`, le restore peut redéployer
 une autre version que celle sauvegardée, et la démonstration perd son sens.
+
+## Voir aussi
+
+[[Kubernetes PVC]] pour le stockage persistant : le trio StorageClass,
+PersistentVolume et PersistentVolumeClaim, et le cas Azure Files en NFS.
