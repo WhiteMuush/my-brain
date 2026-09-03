@@ -28,7 +28,7 @@ Cette note est le sommaire. Chaque sujet a sa fiche.
 4. **Le réglage du compte écrase celui du conteneur.** Si l'accès anonyme est
    coupé au niveau du compte, régler le conteneur ne change rien.
 5. **Plan de gestion et plan de données sont deux mondes.** Être `Owner` du
-   compte ne donne aucun droit de lecture sur les blobs. Voir [[AZ-104]].
+   compte ne donne aucun droit de lecture sur les blobs.
 
 ## Commandes utiles
 
