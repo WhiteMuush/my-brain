@@ -112,9 +112,3 @@ az storage blob upload --account-name <compte> --auth-mode login \
 
 Le `--auth-mode login` est ce qui force le passage par Entra ID au lieu de la clé
 du compte. Sans lui, la CLI cherche une clé et échoue si elle n'y a pas accès.
-
-## Voir aussi
-
-- [[Azure]] pour les notes de labo, dont l'accès aux blobs par Workload Identity
-- [[MinIO]] pour l'équivalent stockage objet auto-hébergé
-- [[Velero]] qui consomme un container blob comme cible de sauvegarde
