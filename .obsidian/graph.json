@@ -5,7 +5,7 @@
   "showAttachments": false,
   "hideUnresolved": false,
   "showOrphans": true,
-  "collapse-color-groups": true,
+  "collapse-color-groups": false,
   "colorGroups": [
     {
       "query": "file:Accueil",
@@ -160,6 +160,13 @@
         "a": 1,
         "rgb": 49151
       }
+    },
+    {
+      "query": "file:AZ-104",
+      "color": {
+        "a": 1,
+        "rgb": 10293264
+      }
     }
   ],
   "collapse-display": true,
@@ -172,6 +179,6 @@
   "repelStrength": 9.6079012345679,
   "linkStrength": 0.522074074074074,
   "linkDistance": 110,
-  "scale": 0.5524941484281771,
-  "close": false
+  "scale": 0.8287412226422657,
+  "close": true
 }

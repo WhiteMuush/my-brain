@@ -14,6 +14,7 @@ Cette note est le sommaire. Chaque sujet a sa fiche.
 | [[Stockage Chiffrement]] | SSE, clés gérées par le client, chiffrement d'infrastructure |
 | [[Stockage Réseau]] | Pare-feu, service endpoints, private endpoints, domaine personnalisé |
 | [[Azure Files]] | Partages SMB et NFS, snapshots, soft delete, File Sync |
+| [[Stockage QCM Corrigé]] | Corrigé commenté des 35 questions du QCM Part 1 |
 
 ## Les cinq réflexes qui répondent à la moitié des questions
 
