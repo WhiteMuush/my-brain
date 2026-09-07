@@ -4,8 +4,8 @@
   "showTags": false,
   "showAttachments": false,
   "hideUnresolved": false,
-  "showOrphans": true,
-  "collapse-color-groups": false,
+  "showOrphans": false,
+  "collapse-color-groups": true,
   "colorGroups": [
     {
       "query": "file:Accueil",
@@ -155,30 +155,23 @@
       }
     },
     {
-      "query": "MinIO",
+      "query": "file:MinIO",
       "color": {
         "a": 1,
         "rgb": 49151
       }
-    },
-    {
-      "query": "file:AZ-104",
-      "color": {
-        "a": 1,
-        "rgb": 10293264
-      }
     }
   ],
-  "collapse-display": true,
+  "collapse-display": false,
   "showArrow": false,
   "textFadeMultiplier": -1.4,
   "nodeSizeMultiplier": 1.40473372781065,
-  "lineSizeMultiplier": 0.861738271604938,
+  "lineSizeMultiplier": 1.87765072765073,
   "collapse-forces": false,
-  "centerStrength": 0.284444444444444,
-  "repelStrength": 9.6079012345679,
-  "linkStrength": 0.522074074074074,
-  "linkDistance": 110,
-  "scale": 0.5524941484281769,
+  "centerStrength": 0.3410152600436,
+  "repelStrength": 12,
+  "linkStrength": 1,
+  "linkDistance": 250,
+  "scale": 0.9634356124168724,
   "close": true
 }
