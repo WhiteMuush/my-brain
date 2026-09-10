@@ -2,8 +2,7 @@
 
 Le langage de Microsoft pour décrire des ressources Azure. Il se compile en ARM
 JSON : c'est un transpileur, pas un moteur d'exécution. Donc pas d'état, pas de
-`.tfstate`, pas de verrou. Le pendant côté HashiCorp est dans [[Terraform]], et
-le contexte de l'examen dans [[AZ-104]].
+`.tfstate`, pas de verrou.
 
 ## Réponses rapides
 
@@ -133,5 +132,3 @@ et ça se documente.
 ## Liens
 
 - [[Accueil]]
-- [[Terraform]]
-- [[AZ-104]]
