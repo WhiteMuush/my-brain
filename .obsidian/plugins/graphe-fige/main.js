@@ -10,9 +10,16 @@ function readPositions(nodes) {
     return positions;
 }
 
+// Les messages du plugin passent par le canal d'origine du worker, pour ne jamais être pris pour un geste de la souris.
+function send(renderer, message) {
+    const worker = renderer.worker;
+    if (worker.grapheFigeSend) worker.grapheFigeSend(message);
+    else worker.postMessage(message);
+}
+
 function pinAll(renderer, positions) {
     for (const [id, pos] of Object.entries(positions)) {
-        renderer.worker.postMessage({ forceNode: { id, x: pos.x, y: pos.y } });
+        send(renderer, { forceNode: { id, x: pos.x, y: pos.y } });
     }
 }
 
@@ -20,37 +27,46 @@ function pinAppearing(renderer, positions, pinned) {
     for (const node of renderer.nodes) {
         const pos = positions[node.id];
         if (!pos || pinned.has(node.id)) continue;
-        renderer.worker.postMessage({ forceNode: { id: node.id, x: pos.x, y: pos.y } });
+        send(renderer, { forceNode: { id: node.id, x: pos.x, y: pos.y } });
         pinned.add(node.id);
     }
 }
 
 function releaseAll(renderer, positions) {
     for (const id of Object.keys(positions)) {
-        renderer.worker.postMessage({ forceNode: { id, x: null, y: null } });
+        send(renderer, { forceNode: { id, x: null, y: null } });
     }
 }
 
-// Obsidian libère un nœud quand on le lâche, on le rebloque donc à l'endroit du lâcher.
-function keepDroppedNodes(renderer, getPositions, onMove) {
+// Pendant qu'on tire une note, tout le graphe redevient vivant, puis il est refigé là où il est au lâcher.
+function followDrags(renderer, getPositions, onDrop) {
     const worker = renderer.worker;
-    if (worker.grapheFigePatched) return;
+    if (worker.grapheFigeSend) return;
     const post = worker.postMessage.bind(worker);
+    worker.grapheFigeSend = post;
+    let dragging = false;
 
     worker.postMessage = (message) => {
         const force = message && message.forceNode;
-        if (force && force.x === null && force.y === null && getPositions()[force.id]) {
-            const node = renderer.nodes.find((n) => n.id === force.id);
-            if (node) {
-                const pos = { x: node.x, y: node.y };
-                onMove(force.id, pos);
-                post({ forceNode: { id: force.id, x: pos.x, y: pos.y } });
-                return;
-            }
+        const positions = getPositions();
+        if (!force || Object.keys(positions).length === 0) {
+            post(message);
+            return;
+        }
+
+        const dropped = force.x === null && force.y === null;
+        if (!dropped && !dragging) {
+            dragging = true;
+            releaseAll(renderer, Object.fromEntries(Object.entries(positions).filter(([id]) => id !== force.id)));
+        } else if (dropped && dragging) {
+            dragging = false;
+            const current = readPositions(renderer.nodes);
+            pinAll(renderer, current);
+            onDrop(current);
+            return;
         }
         post(message);
     };
-    worker.grapheFigePatched = true;
 }
 
 // Le graphe crée ses nœuds petit à petit, on appelle onCheck à chaque passage puis onDone quand leur nombre ne bouge plus.
@@ -100,8 +116,8 @@ class GrapheFige extends Plugin {
     restoreGraphs() {
         for (const view of this.graphViews()) {
             const renderer = view.renderer;
-            keepDroppedNodes(renderer, () => this.positions, (id, pos) => {
-                this.positions[id] = pos;
+            followDrags(renderer, () => this.positions, (positions) => {
+                this.positions = positions;
                 this.save();
             });
             if (renderer.grapheFigeRestored) continue;
@@ -151,5 +167,5 @@ class GrapheFige extends Plugin {
     }
 }
 
-GrapheFige.helpers = { readPositions, pinAll, pinAppearing, releaseAll, keepDroppedNodes, untilNodesStable };
+GrapheFige.helpers = { readPositions, pinAll, pinAppearing, releaseAll, followDrags, untilNodesStable };
 module.exports = GrapheFige;
