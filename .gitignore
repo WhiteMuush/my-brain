@@ -1,5 +1,6 @@
 .obsidian/workspace.json
 .obsidian/workspace-mobile.json
 .trash/
-.obsidian/plugins/
+.obsidian/plugins/*
+!.obsidian/plugins/graphe-fige/
 .obsidian/community-plugins.json
