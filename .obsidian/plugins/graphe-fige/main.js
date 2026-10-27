@@ -23,7 +23,8 @@ function pinAll(renderer, positions) {
     }
 }
 
-function pinAppearing(renderer, positions, pinned) {
+function pinAppearing(renderer, positions, pinned, total = Object.keys(positions).length) {
+    if (pinned.size >= total) return;
     for (const node of renderer.nodes) {
         const pos = positions[node.id];
         if (!pos || pinned.has(node.id)) continue;
@@ -127,9 +128,10 @@ class GrapheFige extends Plugin {
             // Le graphe reste caché pendant qu'on replace les notes, pour ne pas voir l'explosion de départ.
             view.contentEl.style.opacity = '0';
             const pinned = new Set();
+            const total = Object.keys(this.positions).length;
             untilNodesStable(
                 renderer,
-                () => pinAppearing(renderer, this.positions, pinned),
+                () => pinAppearing(renderer, this.positions, pinned, total),
                 () => (view.contentEl.style.opacity = ''),
             );
         }
