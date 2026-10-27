@@ -1,9 +1,8 @@
 // Plugin Obsidian qui garde chaque note du graphe à la place où on l'a figée.
 const { Plugin, Notice } = require('obsidian');
 
-const CHECK_DELAY_MS = 200;
-const STABLE_CHECKS = 3;
-const MAX_CHECKS = 30;
+// Vérification à chaque image : stable après 10 images sans nouveau nœud, abandon après 3 secondes environ.
+const NODE_CHECKS = { stableChecks: 10, maxChecks: 180 };
 
 function readPositions(nodes) {
     const positions = {};
@@ -14,6 +13,15 @@ function readPositions(nodes) {
 function pinAll(renderer, positions) {
     for (const [id, pos] of Object.entries(positions)) {
         renderer.worker.postMessage({ forceNode: { id, x: pos.x, y: pos.y } });
+    }
+}
+
+function pinAppearing(renderer, positions, pinned) {
+    for (const node of renderer.nodes) {
+        const pos = positions[node.id];
+        if (!pos || pinned.has(node.id)) continue;
+        renderer.worker.postMessage({ forceNode: { id: node.id, x: pos.x, y: pos.y } });
+        pinned.add(node.id);
     }
 }
 
@@ -45,22 +53,23 @@ function keepDroppedNodes(renderer, getPositions, onMove) {
     worker.grapheFigePatched = true;
 }
 
-// Le graphe crée ses nœuds petit à petit, on attend que leur nombre ne bouge plus.
-function whenNodesStable(renderer, onStable, schedule = (fn) => setTimeout(fn, CHECK_DELAY_MS)) {
+// Le graphe crée ses nœuds petit à petit, on appelle onCheck à chaque passage puis onDone quand leur nombre ne bouge plus.
+function untilNodesStable(renderer, onCheck, onDone, schedule = (fn) => requestAnimationFrame(fn), limits = NODE_CHECKS) {
     let last = -1;
     let same = 0;
     let checks = 0;
 
     const check = () => {
         checks++;
+        onCheck();
         const count = renderer.nodes.length;
         same = count > 0 && count === last ? same + 1 : 0;
         last = count;
-        if (same >= STABLE_CHECKS) {
-            onStable();
+        if (same >= limits.stableChecks || checks >= limits.maxChecks) {
+            onDone();
             return;
         }
-        if (checks < MAX_CHECKS) schedule(check);
+        schedule(check);
     };
     schedule(check);
 }
@@ -77,22 +86,36 @@ class GrapheFige extends Plugin {
         this.app.workspace.onLayoutReady(() => this.restoreGraphs());
     }
 
-    renderers() {
+    graphViews() {
         return this.app.workspace
             .getLeavesOfType('graph')
-            .map((leaf) => leaf.view && leaf.view.renderer)
-            .filter((renderer) => renderer && renderer.worker && Array.isArray(renderer.nodes));
+            .map((leaf) => leaf.view)
+            .filter((view) => view && view.renderer && view.renderer.worker && Array.isArray(view.renderer.nodes));
+    }
+
+    renderers() {
+        return this.graphViews().map((view) => view.renderer);
     }
 
     restoreGraphs() {
-        for (const renderer of this.renderers()) {
+        for (const view of this.graphViews()) {
+            const renderer = view.renderer;
             keepDroppedNodes(renderer, () => this.positions, (id, pos) => {
                 this.positions[id] = pos;
                 this.save();
             });
             if (renderer.grapheFigeRestored) continue;
             renderer.grapheFigeRestored = true;
-            whenNodesStable(renderer, () => pinAll(renderer, this.positions));
+            if (Object.keys(this.positions).length === 0) continue;
+
+            // Le graphe reste caché pendant qu'on replace les notes, pour ne pas voir l'explosion de départ.
+            view.contentEl.style.opacity = '0';
+            const pinned = new Set();
+            untilNodesStable(
+                renderer,
+                () => pinAppearing(renderer, this.positions, pinned),
+                () => (view.contentEl.style.opacity = ''),
+            );
         }
     }
 
@@ -128,5 +151,5 @@ class GrapheFige extends Plugin {
     }
 }
 
-GrapheFige.helpers = { readPositions, pinAll, releaseAll, keepDroppedNodes, whenNodesStable };
+GrapheFige.helpers = { readPositions, pinAll, pinAppearing, releaseAll, keepDroppedNodes, untilNodesStable };
 module.exports = GrapheFige;
