@@ -8,157 +8,31 @@
   "collapse-color-groups": true,
   "colorGroups": [
     {
-      "query": "file:Accueil",
+      "query": "file:My-Brain",
       "color": {
         "a": 1,
-        "rgb": 11032055
+        "rgb": 16777215
       }
     },
     {
-      "query": "file:Proxmox",
-      "color": {
-        "a": 1,
-        "rgb": 15036416
-      }
-    },
-    {
-      "query": "file:Ansible",
-      "color": {
-        "a": 1,
-        "rgb": 15597568
-      }
-    },
-    {
-      "query": "file:Kubernetes",
-      "color": {
-        "a": 1,
-        "rgb": 1920728
-      }
-    },
-    {
-      "query": "file:Docker",
-      "color": {
-        "a": 1,
-        "rgb": 2397933
-      }
-    },
-    {
-      "query": "file:Terraform",
+      "query": "path:\"Terraform/\"",
       "color": {
         "a": 1,
         "rgb": 9133302
       }
     },
     {
-      "query": "file:\"GitHub Actions\"",
+      "query": "path:\"Ansible/\"",
       "color": {
         "a": 1,
-        "rgb": 6514417
+        "rgb": 15680580
       }
     },
     {
-      "query": "file:GitLab",
-      "color": {
-        "a": 1,
-        "rgb": 16096779
-      }
-    },
-    {
-      "query": "file:GitHub",
-      "color": {
-        "a": 1,
-        "rgb": 10265519
-      }
-    },
-    {
-      "query": "file:Git",
-      "color": {
-        "a": 1,
-        "rgb": 7893356
-      }
-    },
-    {
-      "query": "file:Grafana",
-      "color": {
-        "a": 1,
-        "rgb": 15381256
-      }
-    },
-    {
-      "query": "file:Prometheus",
-      "color": {
-        "a": 1,
-        "rgb": 14753096
-      }
-    },
-    {
-      "query": "file:Helm",
-      "color": {
-        "a": 1,
-        "rgb": 440020
-      }
-    },
-    {
-      "query": "file:ArgoCD",
-      "color": {
-        "a": 1,
-        "rgb": 14239471
-      }
-    },
-    {
-      "query": "file:Nginx",
+      "query": "path:\"Sécurité/\"",
       "color": {
         "a": 1,
         "rgb": 2278750
-      }
-    },
-    {
-      "query": "file:Debian",
-      "color": {
-        "a": 1,
-        "rgb": 15485081
-      }
-    },
-    {
-      "query": "file:Linux",
-      "color": {
-        "a": 1,
-        "rgb": 8702998
-      }
-    },
-    {
-      "query": "file:AWS",
-      "color": {
-        "a": 1,
-        "rgb": 1357990
-      }
-    },
-    {
-      "query": "file:Azure",
-      "color": {
-        "a": 1,
-        "rgb": 959977
-      }
-    },
-    {
-      "query": "file:Reseau",
-      "color": {
-        "a": 1,
-        "rgb": 1096065
-      }
-    },
-    {
-      "query": "file:Velero",
-      "color": {
-        "a": 1,
-        "rgb": 65471
-      }
-    },
-    {
-      "query": "file:MinIO",
-      "color": {
-        "a": 1,
-        "rgb": 49151
       }
     }
   ],
@@ -172,6 +46,6 @@
   "repelStrength": 12,
   "linkStrength": 1,
   "linkDistance": 250,
-  "scale": 0.41962884066318495,
+  "scale": 0.9759645162939643,
   "close": true
 }
