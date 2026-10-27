@@ -4,48 +4,19 @@
   "showTags": false,
   "showAttachments": false,
   "hideUnresolved": false,
-  "showOrphans": false,
+  "showOrphans": true,
   "collapse-color-groups": true,
-  "colorGroups": [
-    {
-      "query": "file:My-Brain",
-      "color": {
-        "a": 1,
-        "rgb": 16777215
-      }
-    },
-    {
-      "query": "path:\"Terraform/\"",
-      "color": {
-        "a": 1,
-        "rgb": 9133302
-      }
-    },
-    {
-      "query": "path:\"Ansible/\"",
-      "color": {
-        "a": 1,
-        "rgb": 15680580
-      }
-    },
-    {
-      "query": "path:\"Sécurité/\"",
-      "color": {
-        "a": 1,
-        "rgb": 2278750
-      }
-    }
-  ],
+  "colorGroups": [],
   "collapse-display": false,
   "showArrow": false,
-  "textFadeMultiplier": -1.1,
-  "nodeSizeMultiplier": 1.0838243902439,
-  "lineSizeMultiplier": 2.43000975609756,
+  "textFadeMultiplier": -2.4,
+  "nodeSizeMultiplier": 0.839063414634146,
+  "lineSizeMultiplier": 0.747278048780488,
   "collapse-forces": false,
-  "centerStrength": 0.419317073170732,
-  "repelStrength": 11.5110702989491,
+  "centerStrength": 0.188292682926829,
+  "repelStrength": 10,
   "linkStrength": 1,
   "linkDistance": 250,
-  "scale": 0.6343982397588754,
-  "close": true
+  "scale": 0.5163958188560142,
+  "close": false
 }
