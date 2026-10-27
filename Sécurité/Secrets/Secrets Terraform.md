@@ -30,7 +30,7 @@ Thème : [[Secrets]]
    tfplan.bin
    .env
    ```
-5. Garder le state dans un backend distant à accès restreint : [[Terraform State GitLab]].
+5. Garder le state dans un backend distant à accès restreint, par exemple le state GitLab.
    `sensitive` masque l'affichage, mais **le state garde les valeurs en clair**.
 6. Si un fichier secret est déjà suivi par Git :
    ```bash

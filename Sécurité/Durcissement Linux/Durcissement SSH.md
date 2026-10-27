@@ -49,5 +49,3 @@ Version Ansible, avec validation avant écriture :
     validate: /usr/sbin/sshd -t -f %s
   notify: Restart SSH
 ```
-
-Handler et structure du rôle : [[Ansible Rôles]].

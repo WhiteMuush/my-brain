@@ -27,5 +27,3 @@ ansible-galaxy role init roles/<nom>
 # Documentation d'un module
 ansible-doc ansible.builtin.copy
 ```
-
-Secrets : [[Secrets Ansible Vault]]. Lint : [[Scan ansible-lint]].

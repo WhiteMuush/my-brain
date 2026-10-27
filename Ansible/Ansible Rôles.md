@@ -55,12 +55,10 @@ Thème : [[Ansible]]
    ```yaml
    app_token: "{{ lookup('ansible.builtin.env', 'APP_TOKEN') | mandatory }}"
    ```
-   et ajouter `no_log: true` sur la tâche qui l'utilise. Voir [[Secrets Ansible Vault]].
+   et ajouter `no_log: true` sur la tâche qui l'utilise.
 7. Ajouter le rôle dans `site.yml`, puis tester :
    ```bash
    ansible-playbook site.yml --check --diff
    ansible-playbook site.yml --diff
    ansible-playbook site.yml --diff     # 2e passage : changed=0 attendu
    ```
-
-Exemple complet de rôle de durcissement : [[Durcissement SSH]].
