@@ -1,0 +1,104 @@
+{
+  "positions": {
+    "My-Brain.md": {
+      "x": 10.722009658813477,
+      "y": -95.36331176757812
+    },
+    "Ansible/Ansible Commandes.md": {
+      "x": -633.23876953125,
+      "y": -355.0391845703125
+    },
+    "Ansible/Ansible Depuis Terraform.md": {
+      "x": -675.1296997070312,
+      "y": -175.260498046875
+    },
+    "Ansible/Ansible Rôles.md": {
+      "x": -464.30706787109375,
+      "y": -475.56689453125
+    },
+    "Ansible/Ansible Structure projet.md": {
+      "x": -595.1387329101562,
+      "y": -12.009909629821777
+    },
+    "Ansible/Ansible.md": {
+      "x": -393.9694519042969,
+      "y": -209.88897705078125
+    },
+    "Sécurité/Sécurité.md": {
+      "x": 118.0455322265625,
+      "y": 361.0103759765625
+    },
+    "Terraform/Terraform Commandes.md": {
+      "x": 535.1030883789062,
+      "y": -491.7153015136719
+    },
+    "Terraform/Terraform Modules.md": {
+      "x": 443.4202880859375,
+      "y": -627.4166870117188
+    },
+    "Terraform/Terraform State GitLab.md": {
+      "x": 528.5573120117188,
+      "y": -333.38336181640625
+    },
+    "Terraform/Terraform Structure projet.md": {
+      "x": 255.0689697265625,
+      "y": -687.6202392578125
+    },
+    "Terraform/Terraform.md": {
+      "x": 262.1385498046875,
+      "y": -411.0135803222656
+    },
+    "Sécurité/Durcissement Linux/Durcissement Linux.md": {
+      "x": 329.0937194824219,
+      "y": 641.4370727539062
+    },
+    "Sécurité/Durcissement Linux/Durcissement Pare-feu.md": {
+      "x": 579.9169921875,
+      "y": 760.7456665039062
+    },
+    "Sécurité/Durcissement Linux/Durcissement SSH.md": {
+      "x": 376.34130859375,
+      "y": 913.2302856445312
+    },
+    "Sécurité/Scan/Scan ansible-lint.md": {
+      "x": -148.43617248535156,
+      "y": 923.8329467773438
+    },
+    "Sécurité/Scan/Scan Checkov.md": {
+      "x": -365.5175476074219,
+      "y": 811.0135498046875
+    },
+    "Sécurité/Scan/Scan Trivy.md": {
+      "x": -410.0754699707031,
+      "y": 602.3125610351562
+    },
+    "Sécurité/Scan/Scan.md": {
+      "x": -138.3925018310547,
+      "y": 648.9699096679688
+    },
+    "Sécurité/Secrets/Secrets Ansible Vault.md": {
+      "x": 329.3348693847656,
+      "y": 116.64178466796875
+    },
+    "Sécurité/Secrets/Secrets CI OIDC.md": {
+      "x": 738.7877197265625,
+      "y": 218.2911376953125
+    },
+    "Sécurité/Secrets/Secrets Terraform.md": {
+      "x": 566.0615844726562,
+      "y": 67.88751983642578
+    },
+    "Sécurité/Secrets/Secrets.md": {
+      "x": 481.48583984375,
+      "y": 324.61614990234375
+    },
+    "Sécurité/TLS/TLS openssl.md": {
+      "x": -200.63983154296875,
+      "y": -38.40782928466797
+    },
+    "Sécurité/TLS/TLS.md": {
+      "x": -118.25812530517578,
+      "y": 214.95094299316406
+    }
+  }
+}
