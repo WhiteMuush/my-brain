@@ -5,7 +5,7 @@
   "showAttachments": false,
   "hideUnresolved": false,
   "showOrphans": true,
-  "collapse-color-groups": false,
+  "collapse-color-groups": true,
   "colorGroups": [
     {
       "query": "file:My-Brain",
@@ -74,6 +74,6 @@
   "repelStrength": 7.4182497664279,
   "linkStrength": 1,
   "linkDistance": 250,
-  "scale": 0.7603946695826844,
+  "scale": 0.6044605842501206,
   "close": false
 }
