@@ -2,7 +2,8 @@ Thème : [[Terraform]]
 
 # Terraform Structure projet
 
-1. Créer l'arborescence :
+1. **Créer l'arborescence** :
+
    ```
    terraform/
    ├── environments/
@@ -20,7 +21,9 @@ Thème : [[Terraform]]
            ├── outputs.tf
            └── tests/network.tftest.hcl
    ```
-2. Épingler les versions dans `versions.tf` :
+
+2. **Épingler les versions dans `versions.tf`** :
+
    ```hcl
    terraform {
      required_version = ">= 1.9"
@@ -33,7 +36,9 @@ Thème : [[Terraform]]
      }
    }
    ```
-3. Poser des tags communs dans `main.tf` :
+
+3. **Poser des tags communs dans `main.tf`** :
+
    ```hcl
    locals {
      common_tags = {
@@ -43,7 +48,9 @@ Thème : [[Terraform]]
      }
    }
    ```
-4. Créer le `.gitignore` :
+
+4. **Créer le `.gitignore`** :
+
    ```
    .terraform/
    *.tfstate
@@ -56,5 +63,7 @@ Thème : [[Terraform]]
    override.tf
    *_override.tf
    ```
-5. Commiter `.terraform.lock.hcl` : il fige les versions exactes des providers.
-6. Lancer `terraform init` depuis `environments/dev`.
+
+5. **Commiter `.terraform.lock.hcl` : il fige les versions exactes des providers.**
+
+6. **Lancer `terraform init` depuis `environments/dev`.**

@@ -2,7 +2,8 @@ Thème : [[Docker]]
 
 # Docker Compose
 
-1. Écrire `compose.yaml` :
+1. **Écrire `compose.yaml`** :
+
    ```yaml
    name: <projet>
 
@@ -55,8 +56,11 @@ Thème : [[Docker]]
    networks:
      app-net:
    ```
-2. Mettre les secrets dans `.env`, ajouté au `.gitignore`, et commiter un `.env.example` sans valeurs.
-3. Commandes :
+
+2. **Mettre les secrets dans `.env`, ajouté au `.gitignore`, et commiter un `.env.example` sans valeurs.**
+
+3. **Commandes** :
+
    ```bash
    docker compose config                # vérifier le fichier et les variables
    docker compose up -d --build
@@ -66,7 +70,12 @@ Thème : [[Docker]]
    docker compose down                  # garde les volumes
    docker compose down -v               # supprime aussi les volumes
    ```
-4. En développement, reconstruire à chaque modification :
+
+   > [!CAUTION]
+   > `docker compose down -v` **efface les données** des volumes.
+
+4. **En développement, reconstruire à chaque modification** :
+
    ```yaml
    services:
      api:
@@ -75,6 +84,7 @@ Thème : [[Docker]]
            - path: .
              action: rebuild
    ```
+
    ```bash
    docker compose watch
    ```

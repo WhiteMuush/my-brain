@@ -2,13 +2,18 @@ Thème : [[Helm]]
 
 # Helm Traefik
 
-Contrôleur d'Ingress. Remplace ingress-nginx, arrêté par Kubernetes en mars 2026.
+Contrôleur d'Ingress.
 
-1. Voir la dernière version :
+Remplace ingress-nginx, arrêté par Kubernetes en mars 2026.
+
+1. **Voir la dernière version** :
+
    ```bash
    helm show chart oci://ghcr.io/traefik/helm/traefik | grep '^version'
    ```
-2. Écrire `helm/traefik/values.yaml` :
+
+2. **Écrire `helm/traefik/values.yaml`** :
+
    ```yaml
    deployment:
      replicas: 1
@@ -38,20 +43,27 @@ Contrôleur d'Ingress. Remplace ingress-nginx, arrêté par Kubernetes en mars 2
        # Seulement sur l'entrée interne, accessible par port-forward
        enabled: true
    ```
-3. Installer :
+
+3. **Installer** :
+
    ```bash
    helm upgrade --install traefik oci://ghcr.io/traefik/helm/traefik \
      --version <version> \
      --namespace traefik --create-namespace \
      --values helm/traefik/values.yaml --wait
    ```
-4. Vérifier :
+
+4. **Vérifier** :
+
    ```bash
    kubectl get pods,svc -n traefik
    kubectl get ingressclass
    ```
-5. Ouvrir le dashboard :
+
+5. **Ouvrir le dashboard** :
+
    ```bash
    kubectl port-forward -n traefik deploy/traefik 9000:8080
    ```
+
    Puis http://localhost:9000/dashboard/

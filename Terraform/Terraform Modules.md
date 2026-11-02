@@ -2,8 +2,10 @@ Thème : [[Terraform]]
 
 # Terraform Modules
 
-1. Créer `modules/<nom>/` avec `main.tf`, `variables.tf` et `outputs.tf`.
-2. Typer chaque variable et valider ce qui est connu d'avance :
+1. **Créer `modules/<nom>/` avec `main.tf`, `variables.tf` et `outputs.tf`.**
+
+2. **Typer chaque variable et valider ce qui est connu d'avance** :
+
    ```hcl
    variable "name_prefix" {
      description = "Préfixe de nommage des ressources."
@@ -26,13 +28,17 @@ Thème : [[Terraform]]
      default = {}
    }
    ```
-3. Exposer ce dont l'appelant a besoin dans `outputs.tf` :
+
+3. **Exposer ce dont l'appelant a besoin dans `outputs.tf`** :
+
    ```hcl
    output "subnet_id" {
      value = <ressource>.this.id
    }
    ```
-4. Appeler le module depuis l'environnement :
+
+4. **Appeler le module depuis l'environnement** :
+
    ```hcl
    module "network" {
      source = "../../modules/network"
@@ -41,7 +47,9 @@ Thème : [[Terraform]]
      tags        = local.common_tags
    }
    ```
-5. Écrire le test `modules/<nom>/tests/<nom>.tftest.hcl`, sans rien créer grâce au provider simulé :
+
+5. **Écrire le test `modules/<nom>/tests/<nom>.tftest.hcl`**, sans rien créer grâce au provider simulé :
+
    ```hcl
    mock_provider "<nom du provider>" {}
 
@@ -68,7 +76,9 @@ Thème : [[Terraform]]
      expect_failures = [var.subnet_prefix]
    }
    ```
-6. Lancer le test depuis le dossier du module :
+
+6. **Lancer le test depuis le dossier du module** :
+
    ```bash
    terraform init -backend=false
    terraform test

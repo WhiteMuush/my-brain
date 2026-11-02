@@ -2,7 +2,8 @@ Thème : [[Helm]]
 
 # Helm Commandes
 
-1. Installer Helm depuis l'archive officielle, avec vérification de la somme (version sur https://github.com/helm/helm/releases) :
+1. **Installer Helm depuis l'archive officielle**, avec vérification de la somme (version sur https://github.com/helm/helm/releases) :
+
    ```bash
    V=<version, ex. v4.x.y>
    curl -fsSLO "https://get.helm.sh/helm-${V}-linux-amd64.tar.gz"
@@ -11,7 +12,9 @@ Thème : [[Helm]]
    tar -xzf "helm-${V}-linux-amd64.tar.gz"
    sudo install -m 0755 linux-amd64/helm /usr/local/bin/helm
    ```
-2. Commandes du quotidien :
+
+2. **Commandes du quotidien** :
+
    ```bash
    # Dépôts classiques
    helm repo add <nom> <url>
@@ -44,7 +47,9 @@ Thème : [[Helm]]
    helm rollback <release> <révision> -n <ns>
    helm uninstall <release> -n <ns>
    ```
-3. Ranger chaque release dans le projet :
+
+3. **Ranger chaque release dans le projet** :
+
    ```
    helm/<release>/values.yaml     les valeurs modifiées seulement
    ```

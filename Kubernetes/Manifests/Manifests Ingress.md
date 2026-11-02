@@ -33,6 +33,7 @@ spec:
 ```
 
 Vérifier :
+
 ```bash
 kubectl get ingress -n <ns>
 kubectl get certificate -n <ns>          # READY doit passer à True

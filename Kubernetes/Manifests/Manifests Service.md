@@ -3,6 +3,7 @@ Thème : [[Manifests]]
 # Manifests Service
 
 Interne au cluster (cas par défaut) :
+
 ```yaml
 apiVersion: v1
 kind: Service
@@ -19,6 +20,7 @@ spec:
 ```
 
 Accès depuis la machine, sur Kind :
+
 ```yaml
 spec:
   type: NodePort
@@ -30,10 +32,14 @@ spec:
       nodePort: 30080
 ```
 
-Sur un vrai cloud, `type: LoadBalancer` crée une IP publique. Pour du HTTP, préférer un ClusterIP derrière un Ingress.
+Sur un vrai cloud, `type: LoadBalancer` crée une IP publique.
+
+Pour du HTTP, préférer un ClusterIP derrière un Ingress.
 
 Vérifier que le Service trouve bien les pods :
+
 ```bash
 kubectl get endpointslices -n <ns> -l kubernetes.io/service-name=<app>
 ```
+
 Liste vide : le `selector` ne correspond pas aux labels des pods.
