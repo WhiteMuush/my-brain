@@ -38,4 +38,7 @@ openstack console log show <vm>       # démarrage de la VM, utile si SSH ne ré
 openstack server event list <vm>
 ```
 
-Ne jamais ouvrir le port 22 à `0.0.0.0/0` : toujours une IP ou une plage précise.
+> [!CAUTION]
+> **Ne jamais** ouvrir le port 22 à `0.0.0.0/0`.
+>
+> Toujours une IP ou une plage précise.

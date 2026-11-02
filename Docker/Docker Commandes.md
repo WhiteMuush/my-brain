@@ -2,7 +2,8 @@ Thème : [[Docker]]
 
 # Docker Commandes
 
-1. Installer depuis le dépôt officiel (Debian ; sur Ubuntu, remplacer `debian` par `ubuntu`) :
+1. **Installer depuis le dépôt officiel (Debian ; sur Ubuntu, remplacer `debian` par `ubuntu`)** :
+
    ```bash
    sudo apt-get update
    sudo apt-get install -y ca-certificates curl
@@ -14,12 +15,16 @@ Thème : [[Docker]]
    sudo apt-get update
    sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
    ```
-2. Utiliser Docker sans sudo (le groupe `docker` équivaut à root sur la machine) :
+
+2. **Utiliser Docker sans sudo (le groupe `docker` équivaut à root sur la machine)** :
+
    ```bash
    sudo usermod -aG docker "$USER"
    newgrp docker
    ```
-3. Commandes du quotidien :
+
+3. **Commandes du quotidien** :
+
    ```bash
    # Images
    docker build -t <image>:<tag> .

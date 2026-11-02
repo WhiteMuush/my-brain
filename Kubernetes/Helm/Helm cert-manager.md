@@ -2,11 +2,14 @@ Thème : [[Helm]]
 
 # Helm cert-manager
 
-1. Voir la dernière version :
+1. **Voir la dernière version** :
+
    ```bash
    helm show chart oci://quay.io/jetstack/charts/cert-manager | grep '^version'
    ```
-2. Écrire `helm/cert-manager/values.yaml` :
+
+2. **Écrire `helm/cert-manager/values.yaml`** :
+
    ```yaml
    crds:
      enabled: true
@@ -20,14 +23,18 @@ Thème : [[Helm]]
      limits:
        memory: 256Mi
    ```
-3. Installer :
+
+3. **Installer** :
+
    ```bash
    helm upgrade --install cert-manager oci://quay.io/jetstack/charts/cert-manager \
      --version <version> \
      --namespace cert-manager --create-namespace \
      --values helm/cert-manager/values.yaml --wait
    ```
-4. Créer l'émetteur Let's Encrypt :
+
+4. **Créer l'émetteur Let's Encrypt** :
+
    ```yaml
    apiVersion: cert-manager.io/v1
    kind: ClusterIssuer
@@ -44,7 +51,9 @@ Thème : [[Helm]]
              ingress:
                ingressClassName: traefik
    ```
+
    Pour un test sans domaine public, un émetteur auto-signé :
+
    ```yaml
    apiVersion: cert-manager.io/v1
    kind: ClusterIssuer
@@ -53,8 +62,11 @@ Thème : [[Helm]]
    spec:
      selfSigned: {}
    ```
-5. Demander un certificat : ajouter `cert-manager.io/cluster-issuer: letsencrypt` sur l'Ingress.
-6. Vérifier :
+
+5. **Demander un certificat** : ajouter `cert-manager.io/cluster-issuer: letsencrypt` sur l'Ingress.
+
+6. **Vérifier** :
+
    ```bash
    kubectl get clusterissuer
    kubectl get certificate -A

@@ -2,7 +2,8 @@ Thème : [[Manifests]]
 
 # Manifests ConfigMap Secret
 
-1. Créer la ConfigMap (réglages non sensibles) :
+1. **Créer la ConfigMap (réglages non sensibles)** :
+
    ```yaml
    apiVersion: v1
    kind: ConfigMap
@@ -13,13 +14,17 @@ Thème : [[Manifests]]
      LOG_LEVEL: info
      DB_HOST: postgres
    ```
-2. Créer le Secret en ligne de commande, jamais en YAML commité :
+
+2. **Créer le Secret en ligne de commande, jamais en YAML commité** :
+
    ```bash
    kubectl create secret generic <app>-secret -n <ns> \
      --from-literal=DB_PASSWORD='<secret>'
    kubectl create secret generic <app>-secret -n <ns> --from-env-file=.env
    ```
-3. Les injecter en variables d'environnement :
+
+3. **Les injecter en variables d'environnement** :
+
    ```yaml
    containers:
      - name: <app>
@@ -29,7 +34,9 @@ Thème : [[Manifests]]
          - secretRef:
              name: <app>-secret
    ```
-4. Ou les monter en fichiers :
+
+4. **Ou les monter en fichiers** :
+
    ```yaml
    containers:
      - name: <app>
@@ -42,11 +49,15 @@ Thème : [[Manifests]]
        configMap:
          name: <app>-config
    ```
-5. Relire un secret :
+
+5. **Relire un secret** :
+
    ```bash
    kubectl get secret <app>-secret -n <ns> -o jsonpath='{.data.DB_PASSWORD}' | base64 -d
    ```
-6. Après un changement, redémarrer les pods (les variables ne se rechargent pas seules) :
+
+6. **Après un changement, redémarrer les pods (les variables ne se rechargent pas seules)** :
+
    ```bash
    kubectl rollout restart deploy/<app> -n <ns>
    ```

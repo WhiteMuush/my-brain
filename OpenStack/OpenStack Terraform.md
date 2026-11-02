@@ -2,7 +2,8 @@ Thème : [[OpenStack]]
 
 # OpenStack Terraform
 
-1. Déclarer le provider, qui lit `clouds.yaml` : aucun secret dans le code.
+1. **Déclarer le provider, qui lit `clouds.yaml` : aucun secret dans le code.**
+
    ```hcl
    terraform {
      required_version = ">= 1.5"
@@ -19,7 +20,9 @@ Thème : [[OpenStack]]
      cloud = var.cloud_name
    }
    ```
-2. Clé SSH et groupe de sécurité :
+
+2. **Clé SSH et groupe de sécurité** :
+
    ```hcl
    resource "openstack_compute_keypair_v2" "this" {
      name       = "${var.name}-key"
@@ -40,7 +43,9 @@ Thème : [[OpenStack]]
      security_group_id = openstack_networking_secgroup_v2.this.id
    }
    ```
-3. Instance :
+
+3. **Instance** :
+
    ```hcl
    resource "openstack_compute_instance_v2" "this" {
      name            = var.name
@@ -54,7 +59,9 @@ Thème : [[OpenStack]]
      }
    }
    ```
-4. IP flottante, associée par le port réseau (provider v3) :
+
+4. **IP flottante, associée par le port réseau (provider v3)** :
+
    ```hcl
    resource "openstack_networking_floatingip_v2" "this" {
      pool = var.floating_ip_pool
@@ -78,14 +85,18 @@ Thème : [[OpenStack]]
      value = openstack_networking_floatingip_v2.this.address
    }
    ```
-5. Lancer :
+
+5. **Lancer** :
+
    ```bash
    export OS_CLOUD=<cloud>
    terraform init
    terraform plan -out=tfplan.bin
    terraform apply tfplan.bin
    ```
-6. Attendre SSH : l'instance est `ACTIVE` bien avant que `sshd` réponde.
+
+6. **Attendre SSH** : l'instance est `ACTIVE` bien avant que `sshd` réponde.
+
    ```bash
    until ssh -o ConnectTimeout=5 -o BatchMode=yes <user>@"$(terraform output -raw public_ip)" true; do sleep 5; done
    ```
