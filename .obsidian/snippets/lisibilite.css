@@ -1,0 +1,48 @@
+/* Spaces out text, lists, tables and headings to make notes easier to read with dyslexia. */
+body {
+  --line-height-normal: 1.8;
+  --p-spacing: 1.4rem;
+  --list-spacing: 0.6em;
+}
+
+.markdown-rendered,
+.markdown-source-view.mod-cm6 .cm-content {
+  letter-spacing: 0.02em;
+  word-spacing: 0.12em;
+}
+
+.markdown-rendered h1,
+.markdown-rendered h2,
+.markdown-rendered h3 {
+  margin-top: 2em;
+  margin-bottom: 0.8em;
+}
+
+.markdown-rendered li > pre,
+.markdown-rendered li > ul {
+  margin-top: 0.6em;
+  margin-bottom: 0.6em;
+}
+
+.markdown-rendered pre code {
+  line-height: 1.6;
+}
+
+.markdown-rendered th,
+.markdown-rendered td {
+  padding: 0.6em 0.9em;
+}
+
+.markdown-rendered h2,
+.cm-header-2 {
+  color: var(--color-blue);
+}
+
+.markdown-rendered h3,
+.cm-header-3 {
+  color: var(--color-purple);
+}
+
+.markdown-rendered .callout {
+  margin: 1.2em 0;
+}
