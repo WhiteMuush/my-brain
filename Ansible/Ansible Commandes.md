@@ -21,6 +21,7 @@ Thème : [[Ansible]]
    ansible web -m ansible.builtin.command -a 'uptime'
    ansible web -b -m ansible.builtin.apt -a 'name=htop state=present'
    ansible web -m ansible.builtin.setup -a 'filter=ansible_distribution*'
+   ansible web -m ansible.builtin.shell -a 'ps aux | grep sshd'
    ```
 
    - **`web`** : le groupe visé.
@@ -30,6 +31,8 @@ Thème : [[Ansible]]
    - **`-b`** : "become", passe en root avec sudo.
    - **`setup`** : affiche les facts.
      `filter` n'en garde qu'une partie.
+   - **`shell`** : comme `command`, mais accepte les pipes `|` et les redirections `>`.
+     Utiliser `command` par défaut, `shell` seulement si besoin.
 
 3. **Lancer un playbook** :
 
@@ -103,3 +106,37 @@ Thème : [[Ansible]]
    - **`-s`** : juste la liste des paramètres, version courte.
    - **`-l`** : tous les modules installés.
      Le `grep` sert à chercher.
+
+   La version web est plus lisible, avec un tableau des paramètres :
+
+   ```text
+   https://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt_module.html
+   ```
+
+   - Remplacer **`apt`** par le nom du module voulu.
+   - Aller directement à la section **Examples** en bas de page.
+   - En ad hoc, transformer chaque `cle: valeur` de l'exemple en `cle=valeur`.
+
+9. **Vérifier quelle config Ansible utilise** :
+
+   ```bash
+   ansible --version
+   ansible-config dump --only-changed
+   ```
+
+   - **`ansible --version`** : la ligne `config file` dit quel `ansible.cfg` est lu.
+     `None` = aucun, tu n'es pas dans le bon dossier.
+   - **`--only-changed`** : seulement les réglages qui diffèrent du défaut, avec le fichier d'où ils viennent.
+
+10. **Vérifier la qualité du code** :
+
+    ```bash
+    pip install ansible-lint
+    ansible-lint
+    ```
+
+    - **`ansible-lint`** : signale les mauvaises pratiques, par exemple un module sans son nom complet (FQCN).
+      À lancer avant chaque commit.
+
+> [!IMPORTANT]
+> Toujours lancer `ansible` depuis le dossier qui contient `ansible.cfg`, sinon il ne trouve pas l'inventaire.
