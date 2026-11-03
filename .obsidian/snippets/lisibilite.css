@@ -46,3 +46,14 @@ body {
 .markdown-rendered .callout {
   margin: 1.2em 0;
 }
+
+/* Code blocks scroll sideways instead of wrapping, in reading view only. */
+.markdown-rendered pre {
+  overflow-x: auto;
+}
+
+.markdown-rendered pre code {
+  white-space: pre;
+  word-break: normal;
+  overflow-wrap: normal;
+}
