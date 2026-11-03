@@ -4,6 +4,8 @@ body {
   --p-spacing: 1.4rem;
   --list-spacing: 0.6em;
   --code-white-space: pre;
+  --h2-size: 1.2em;
+  --h3-size: 1.1em;
 }
 
 .markdown-rendered,
@@ -36,12 +38,12 @@ body {
 
 .markdown-rendered h2,
 .cm-header-2 {
-  color: var(--color-blue);
+  color: var(--text-normal);
 }
 
 .markdown-rendered h3,
 .cm-header-3 {
-  color: var(--color-purple);
+  color: var(--text-normal);
 }
 
 .markdown-rendered .callout {
