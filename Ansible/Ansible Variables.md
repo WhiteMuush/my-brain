@@ -2,6 +2,27 @@ Thème : [[Ansible]]
 
 # Ansible Variables
 
+## Le minimum
+
+Fichier `inventories/lab/group_vars/web.yml`, chargé tout seul pour le groupe `web` :
+
+```yaml
+nginx_port: 8080
+```
+
+Utilisation dans une tâche :
+
+```yaml
+- name: Show the port
+  ansible.builtin.debug:
+    msg: "Port {{ nginx_port }}"
+```
+
+- **`{{ nginx_port }}`** : remplacé par la valeur de la variable.
+- **Guillemets obligatoires** quand la valeur commence par `{{`.
+
+## Pour aller plus loin
+
 1. **Utiliser une variable** : toujours `"{{ nom }}"`, avec les guillemets quand la valeur commence par `{{`.
 
    ```yaml

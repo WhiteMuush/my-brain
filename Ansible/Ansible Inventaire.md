@@ -6,6 +6,27 @@ L'inventaire, c'est l'annuaire de tes serveurs.
 
 Ansible y lit qui existe, comment s'y connecter, et dans quels groupes ils sont.
 
+## Le minimum
+
+```yaml
+all:
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  children:
+    web:
+      hosts:
+        srv01:
+          ansible_host: 10.0.0.5
+          ansible_user: admin
+```
+
+- **`children`** : les groupes.
+- **`hosts`** : les serveurs du groupe.
+- **`all.vars`** : des variables pour tous les serveurs.
+- Vérifier ce qu'Ansible a compris : `ansible-inventory --graph`.
+
+## Pour aller plus loin
+
 1. **Écrire `inventories/dev/hosts.yml`** :
 
    ```yaml

@@ -7,6 +7,17 @@ Les commandes du quotidien, une par besoin.
 > [!IMPORTANT]
 > Toujours lancer `ansible` depuis le dossier qui contient `ansible.cfg`.
 
+## Le minimum
+
+```bash
+ansible <groupe> -m <module> -a "<arguments>"
+```
+
+- **`-m`** : le module, **`-a`** : ses arguments.
+- Ajouter **`-b`** pour passer root.
+
+## Toutes les commandes
+
 1. **Tester la connexion** :
 
    ```bash

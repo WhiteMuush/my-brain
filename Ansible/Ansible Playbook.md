@@ -2,6 +2,39 @@ Thème : [[Ansible]]
 
 # Ansible Playbook
 
+## Le minimum
+
+```yaml
+---
+- name: Install and start nginx
+  hosts: web
+  become: true
+  tasks:
+    - name: Install nginx
+      ansible.builtin.apt:
+        name: nginx
+        state: present
+        update_cache: true
+
+    - name: Make sure nginx is running
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: true
+```
+
+```bash
+ansible-playbook site.yml --check --diff
+ansible-playbook site.yml --diff
+```
+
+- **`hosts`** : le groupe visé.
+- **`become: true`** : passe root.
+- **`tasks`** : la liste des tâches, chacune = un `name` + un module.
+- Relancer une 2e fois : il faut `changed=0`.
+
+## Pour aller plus loin
+
 1. **Un playbook complet, avec ce qu'on utilise le plus souvent** :
 
    ```yaml

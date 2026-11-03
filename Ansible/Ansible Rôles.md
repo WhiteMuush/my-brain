@@ -5,6 +5,30 @@ Thème : [[Ansible]]
 Un rôle, c'est un dossier qui range tout ce qu'il faut pour installer une chose (nginx, docker, un utilisateur...).
 Tu l'écris une fois, puis tu l'appelles depuis n'importe quel playbook.
 
+## Le minimum
+
+```
+roles/nginx/
+├── tasks/main.yml       les tâches
+├── handlers/main.yml    les redémarrages
+├── templates/           les fichiers .j2
+└── defaults/main.yml    les variables par défaut
+```
+
+Appel dans `site.yml` :
+
+```yaml
+- name: Configure the web servers
+  hosts: web
+  become: true
+  roles:
+    - nginx
+```
+
+- Un rôle = **un dossier par chose à installer**, réutilisable partout.
+
+## Pour aller plus loin
+
 1. **Créer le rôle** :
 
    ```bash

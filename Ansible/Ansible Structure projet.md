@@ -2,6 +2,29 @@ Thème : [[Ansible]]
 
 # Ansible Structure projet
 
+## Le minimum
+
+```
+ansible-lab/
+├── ansible.cfg
+├── site.yml
+├── inventories/
+│   └── lab/
+│       ├── hosts.yml
+│       └── group_vars/
+└── roles/
+```
+
+```ini
+[defaults]
+inventory = inventories/lab/hosts.yml
+```
+
+- Toujours lancer `ansible` depuis le dossier qui contient **`ansible.cfg`**.
+- Un dossier sous `inventories/` = **un environnement** (lab, staging, prod).
+
+## Pour aller plus loin
+
 1. **Créer l'arborescence** :
 
    ```
@@ -30,8 +53,6 @@ Thème : [[Ansible]]
    [defaults]
    inventory = inventories/dev/hosts.yml
    remote_user = ansible
-   private_key_file = ~/.ssh/<cle-ansible>
-   interpreter_python = auto_silent
    forks = 10
    callbacks_enabled = ansible.posix.profile_tasks
 
@@ -44,8 +65,8 @@ Thème : [[Ansible]]
      Mets celui de dev, pour ne jamais toucher la prod par accident.
    - **`remote_user`** : le compte SSH utilisé sur les serveurs.
      Un compte dédié `ansible` est plus propre que ton compte perso.
-   - **`private_key_file`** : la clé SSH de ce compte.
-   - **`interpreter_python = auto_silent`** : Ansible trouve Python tout seul sur le serveur, sans afficher d'avertissement.
+   - **Pas de `private_key_file`** : la config est partagée, chacun garde sa clé chez lui (`~/.ssh/id_ed25519` ou `~/.ssh/config`).
+   - **Pas d'`interpreter_python`** : le chemin de Python se fixe dans l'inventaire, avec `ansible_python_interpreter` dans `all.vars`.
    - **`forks = 10`** : nombre de serveurs traités en même temps. 5 par défaut.
    - **`callbacks_enabled = ansible.posix.profile_tasks`** : affiche le temps de chaque tâche, pratique pour trouver les lentes.
      Demande la collection `ansible.posix`.

@@ -7,6 +7,30 @@ Un template, c'est un fichier de config avec des trous.
 Ansible remplit les trous avec tes variables, puis copie le résultat sur le serveur.
 Le langage des trous s'appelle **Jinja2**, et le fichier finit par `.j2`.
 
+## Le minimum
+
+Le fichier `templates/site.conf.j2`, avec un trou :
+
+```jinja
+server {
+    listen {{ nginx_port }};
+}
+```
+
+La tâche qui le remplit et le copie sur le serveur :
+
+```yaml
+- name: Deploy the nginx config
+  ansible.builtin.template:
+    src: site.conf.j2
+    dest: /etc/nginx/sites-available/default
+    mode: "0644"
+```
+
+- **`src`** : le modèle `.j2`, **`dest`** : le fichier final sur le serveur.
+
+## Pour aller plus loin
+
 1. **Écrire `roles/nginx/templates/site.conf.j2`** :
 
    ```jinja

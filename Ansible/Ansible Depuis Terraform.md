@@ -5,6 +5,19 @@ Thème : [[Ansible]]
 Le partage des rôles : **Terraform crée** la machine (VM, réseau, IP), **Ansible la configure** (paquets, services, fichiers).
 Le lien entre les deux, c'est l'adresse IP : Terraform la donne, Ansible s'en sert.
 
+## Le minimum
+
+- **Terraform crée** la VM, **Ansible la configure**.
+- Le lien entre les deux, c'est **l'IP**, que Terraform donne avec :
+
+```bash
+terraform output -raw public_ip
+```
+
+- Cette IP va dans **`ansible_host`** de l'inventaire.
+
+## Pour aller plus loin
+
 1. **Terraform crée la VM avec un compte `ansible` et ta clé publique SSH.**
    Ce compte sert seulement à Ansible, avec sudo.
    Ton compte perso reste à part.
