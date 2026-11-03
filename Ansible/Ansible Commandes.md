@@ -35,12 +35,10 @@ Les commandes du quotidien, une par besoin.
 4. **Installer un paquet** :
 
    ```bash
-   ansible web -b -m ansible.builtin.apt \
-     -a "name=tree state=present update_cache=true"
+   ansible web -b -m ansible.builtin.apt -a "name=tree state=present update_cache=true"
    ```
 
    - **`-b`** : passe root avec sudo.
-   - **`\`** : la commande continue à la ligne suivante, elle se copie en entier.
    - **`state=present`** : l'état voulu, "doit être installé".
 
 5. **Lancer un playbook** :

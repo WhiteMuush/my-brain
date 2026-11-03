@@ -3,6 +3,7 @@ body {
   --line-height-normal: 1.8;
   --p-spacing: 1.4rem;
   --list-spacing: 0.6em;
+  --code-white-space: pre;
 }
 
 .markdown-rendered,
