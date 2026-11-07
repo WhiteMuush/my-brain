@@ -1,0 +1,252 @@
+{
+  "positions": {
+    "Ansible/Ansible Bases.md": {
+      "x": 196.0404510498047,
+      "y": 985.6848754882812
+    },
+    "Ansible/Ansible Commandes.md": {
+      "x": -162.09487915039062,
+      "y": 1153.655029296875
+    },
+    "Ansible/Ansible Depuis Terraform.md": {
+      "x": -51.05642815280078,
+      "y": 1186.8455022871362
+    },
+    "Ansible/Ansible Inventaire.md": {
+      "x": 210.23150634765625,
+      "y": 833.2766723632812
+    },
+    "Ansible/Ansible Playbook.md": {
+      "x": 138.158203125,
+      "y": 1085.461669921875
+    },
+    "Ansible/Ansible Rôles.md": {
+      "x": 46.017051696777344,
+      "y": 1152.2149658203125
+    },
+    "Ansible/Ansible Structure projet.md": {
+      "x": -264.2828369140625,
+      "y": 1105.337646484375
+    },
+    "Ansible/Ansible Templates.md": {
+      "x": -354.1260070800781,
+      "y": 891.3745727539062
+    },
+    "Ansible/Ansible Variables.md": {
+      "x": -331.0964050292969,
+      "y": 1009.0845947265625
+    },
+    "Ansible/Ansible.md": {
+      "x": -64.08566284179688,
+      "y": 851.5676879882812
+    },
+    "Docker/Docker Commandes.md": {
+      "x": 820.3013305664062,
+      "y": -182.98269653320312
+    },
+    "Docker/Docker Compose.md": {
+      "x": 784.5801391601562,
+      "y": -2.566319465637207
+    },
+    "Docker/Docker Debug.md": {
+      "x": 631.2489624023438,
+      "y": -393.43438720703125
+    },
+    "Docker/Docker Dockerfile.md": {
+      "x": 764.0075073242188,
+      "y": -317.25750732421875
+    },
+    "Docker/Docker.md": {
+      "x": 531.702880859375,
+      "y": -125.00081634521484
+    },
+    "Kubernetes/Helm/Helm Argo CD.md": {
+      "x": -1601.855712890625,
+      "y": 165.93008422851562
+    },
+    "Kubernetes/Helm/Helm Commandes.md": {
+      "x": -1861.8494873046875,
+      "y": -77.24403381347656
+    },
+    "Kubernetes/Helm/Helm Traefik.md": {
+      "x": -1853.4993896484375,
+      "y": -201.12832641601562
+    },
+    "Kubernetes/Helm/Helm Velero.md": {
+      "x": -1737.0328369140625,
+      "y": 125.23716735839844
+    },
+    "Kubernetes/Helm/Helm cert-manager.md": {
+      "x": -1778.1461181640625,
+      "y": -320.21539306640625
+    },
+    "Kubernetes/Helm/Helm kube-prometheus-stack.md": {
+      "x": -1824.7347412109375,
+      "y": 36.9045295715332
+    },
+    "Kubernetes/Helm/Helm.md": {
+      "x": -1556.424560546875,
+      "y": -124.07835388183594
+    },
+    "Kubernetes/Kubernetes Cluster local.md": {
+      "x": -1115.1851806640625,
+      "y": -199.3285675048828
+    },
+    "Kubernetes/Kubernetes Commandes.md": {
+      "x": -1114.834716796875,
+      "y": -484.2841796875
+    },
+    "Kubernetes/Kubernetes.md": {
+      "x": -876.6366577148438,
+      "y": -344.89239501953125
+    },
+    "Kubernetes/Manifests/Manifests ConfigMap Secret.md": {
+      "x": -1274.583740234375,
+      "y": -1255.163818359375
+    },
+    "Kubernetes/Manifests/Manifests Deployment.md": {
+      "x": -1467.89697265625,
+      "y": -1112.52001953125
+    },
+    "Kubernetes/Manifests/Manifests Ingress.md": {
+      "x": -1029.619384765625,
+      "y": -1183.9005126953125
+    },
+    "Kubernetes/Manifests/Manifests PVC.md": {
+      "x": -1502.6849365234375,
+      "y": -975.551025390625
+    },
+    "Kubernetes/Manifests/Manifests Quotas.md": {
+      "x": -1151.75830078125,
+      "y": -1254.905517578125
+    },
+    "Kubernetes/Manifests/Manifests Service.md": {
+      "x": -1385.3046875,
+      "y": -1208.918701171875
+    },
+    "Kubernetes/Manifests/Manifests.md": {
+      "x": -1210.084228515625,
+      "y": -957.181884765625
+    },
+    "My-Brain.md": {
+      "x": 134.87852478027344,
+      "y": 23.203079223632812
+    },
+    "OpenStack/OpenStack CLI.md": {
+      "x": 21.78704261779785,
+      "y": -644.3255004882812
+    },
+    "OpenStack/OpenStack Commandes.md": {
+      "x": -128.09300231933594,
+      "y": -671.2649536132812
+    },
+    "OpenStack/OpenStack DevStack.md": {
+      "x": -259.1689147949219,
+      "y": -609.26171875
+    },
+    "OpenStack/OpenStack Terraform.md": {
+      "x": -347.26947021484375,
+      "y": -452.28057861328125
+    },
+    "OpenStack/OpenStack.md": {
+      "x": -77.00150299072266,
+      "y": -378.17022705078125
+    },
+    "Podman/Podman Commandes.md": {
+      "x": -497.7101745605469,
+      "y": 168.70654296875
+    },
+    "Podman/Podman Compose.md": {
+      "x": -480.1435852050781,
+      "y": 338.5539855957031
+    },
+    "Podman/Podman systemd.md": {
+      "x": -360.7825927734375,
+      "y": 451.4736022949219
+    },
+    "Podman/Podman.md": {
+      "x": -218.00498962402344,
+      "y": 208.0878143310547
+    },
+    "Sécurité/Durcissement Linux/Durcissement Linux.md": {
+      "x": 1176.236572265625,
+      "y": 806.6239013671875
+    },
+    "Sécurité/Durcissement Linux/Durcissement Pare-feu.md": {
+      "x": 1125.1541748046875,
+      "y": 1101.8560791015625
+    },
+    "Sécurité/Durcissement Linux/Durcissement SSH.md": {
+      "x": 1291.413818359375,
+      "y": 1084.61474609375
+    },
+    "Sécurité/Scan/Scan Checkov.md": {
+      "x": 1909.1842041015625,
+      "y": 68.3453598022461
+    },
+    "Sécurité/Scan/Scan Trivy.md": {
+      "x": 1869.9752197265625,
+      "y": -83.20510864257812
+    },
+    "Sécurité/Scan/Scan ansible-lint.md": {
+      "x": 1754.709228515625,
+      "y": -191.00486755371094
+    },
+    "Sécurité/Scan/Scan.md": {
+      "x": 1604.8074951171875,
+      "y": 72.31334686279297
+    },
+    "Sécurité/Secrets/Secrets Ansible Vault.md": {
+      "x": 1860.5517578125,
+      "y": 810.4422607421875
+    },
+    "Sécurité/Secrets/Secrets CI OIDC.md": {
+      "x": 1799.1993408203125,
+      "y": 957.8646240234375
+    },
+    "Sécurité/Secrets/Secrets Terraform.md": {
+      "x": 1668.578857421875,
+      "y": 1045.0234375
+    },
+    "Sécurité/Secrets/Secrets.md": {
+      "x": 1561.9779052734375,
+      "y": 759.05517578125
+    },
+    "Sécurité/Sécurité.md": {
+      "x": 1113.145751953125,
+      "y": 382.4181213378906
+    },
+    "Sécurité/TLS/TLS openssl.md": {
+      "x": 1746.270263671875,
+      "y": 425.215087890625
+    },
+    "Sécurité/TLS/TLS.md": {
+      "x": 1449.5958251953125,
+      "y": 405.4127502441406
+    },
+    "Terraform/Terraform Commandes.md": {
+      "x": 308.3074951171875,
+      "y": -954.203125
+    },
+    "Terraform/Terraform Modules.md": {
+      "x": 438.72979736328125,
+      "y": -970.9462890625
+    },
+    "Terraform/Terraform State GitLab.md": {
+      "x": 644.6647338867188,
+      "y": -831.7406616210938
+    },
+    "Terraform/Terraform Structure projet.md": {
+      "x": 554.2708129882812,
+      "y": -927.4082641601562
+    },
+    "Terraform/Terraform.md": {
+      "x": 390.7548828125,
+      "y": -662.9592895507812
+    },
+    "Sans titre.canvas": {
+      "x": 269.0345764160156,
+      "y": -2499.909423828125
+    }
+  }
+}

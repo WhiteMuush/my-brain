@@ -1,0 +1,62 @@
+/* Spaces out text, lists, tables and headings to make notes easier to read with dyslexia. */
+body {
+  --line-height-normal: 1.8;
+  --p-spacing: 1.4rem;
+  --list-spacing: 0.6em;
+  --code-white-space: pre;
+  --h2-size: 1.2em;
+  --h3-size: 1.1em;
+}
+
+.markdown-rendered,
+.markdown-source-view.mod-cm6 .cm-content {
+  letter-spacing: 0.02em;
+  word-spacing: 0.12em;
+}
+
+.markdown-rendered h1,
+.markdown-rendered h2,
+.markdown-rendered h3 {
+  margin-top: 2em;
+  margin-bottom: 0.8em;
+}
+
+.markdown-rendered li > pre,
+.markdown-rendered li > ul {
+  margin-top: 0.6em;
+  margin-bottom: 0.6em;
+}
+
+.markdown-rendered pre code {
+  line-height: 1.6;
+}
+
+.markdown-rendered th,
+.markdown-rendered td {
+  padding: 0.6em 0.9em;
+}
+
+.markdown-rendered h2,
+.cm-header-2 {
+  color: var(--text-normal);
+}
+
+.markdown-rendered h3,
+.cm-header-3 {
+  color: var(--text-normal);
+}
+
+.markdown-rendered .callout {
+  margin: 1.2em 0;
+}
+
+/* Code blocks scroll sideways instead of wrapping, in reading view only. */
+.markdown-rendered pre {
+  overflow-x: auto;
+}
+
+.markdown-rendered pre code {
+  white-space: pre;
+  word-break: normal;
+  overflow-wrap: normal;
+}
